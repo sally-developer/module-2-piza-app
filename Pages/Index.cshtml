@@ -1,0 +1,28 @@
+﻿@page
+@model PizzapartyCalculator.Pages.IndexModel
+@{
+    ViewData["Title"] = "Pizza Party Planner";
+}
+
+<div class="hero-card">
+    <div class="pizza-badge">🍕 Party Planner</div>
+    <h1>Plan the cutest pizza party ever!</h1>
+    <p class="subtitle">Quickly figure out how many pizzas your crew needs and how much it will cost.</p>
+
+    <form method="post" class="pizza-form">
+        <label for="NumberOfGuests">How many guests are coming?</label>
+        <div class="input-row">
+            <input type="number" id="NumberOfGuests" name="NumberOfGuests" value="@Model.NumberOfGuests" required min="1" />
+            <button type="submit">Calculate 🍕</button>
+        </div>
+    </form>
+
+    @if (Model.ShowResult)
+    {
+        <div class="result-card">
+            <h2>Pizza math time! ✨</h2>
+            <p>For <strong>@Model.NumberOfGuests</strong> guests, you'll need <strong>@Model.PizzasNeeded</strong> pizzas.</p>
+            <p>That will cost <strong>$@Model.TotalCost.ToString("0.00")</strong> at $12.99 per pizza.</p>
+        </div>
+    }
+</div>
